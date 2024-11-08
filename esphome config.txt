@@ -1,0 +1,215 @@
+esphome:
+  name: bedcooler
+  friendly_name: BedCooler
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: #USE_YOUR_OWN_KEYS
+
+ota:
+  - platform: esphome
+    password: #USE_YOUR_OWN_KEYS
+
+wifi:
+  ssid: !secret in_home_wifi
+  password: !secret in_home_wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bedcooler Fallback Hotspot"
+    password: #USE_YOUR_OWN_KEYS
+
+captive_portal:
+    
+
+
+sensor:
+  - platform: ntc
+    sensor: resistance_sensor
+    calibration: 
+      - 13.7kOhm -> 16°C
+      - 6.66kOhm -> 33°C
+      - 4.12kOhm -> 45°C
+    name: Water Temperature  
+  - platform: resistance
+    id: resistance_sensor
+    sensor: source_sensor
+    configuration: DOWNSTREAM
+    resistor: 10kOhm
+    name: Resistance sensor
+  - platform: adc
+    id: source_sensor
+    pin:  GPIO5
+    update_interval: 60s
+    name: NTC_ADC
+    attenuation: auto
+
+  
+  - platform: pulse_counter
+    pin: 
+     number: GPIO8   
+     mode: INPUT_PULLUP
+    unit_of_measurement: 'RPM'
+    id: fan_speed
+    name: Fan Speed
+    accuracy_decimals: 0
+    filters:
+     - multiply: 0.5  # Depending on how many pulses the fan sends per round - should be 0.5 or 1 - try...
+    count_mode: 
+      rising_edge: INCREMENT
+      falling_edge: DISABLE
+    update_interval: 30s
+
+      # Every time the fan speed is updated, this sensor will
+  # also be updated for displaying on the frontend. 
+  # See proxy_output.
+  - platform: template
+    name: "Fan Speed (PWM Voltage)"
+    unit_of_measurement: "%"
+    id: pump_speed_pwm_voltage
+  
+  - platform: pulse_counter
+    pin: 
+     number: GPIO12   
+     mode: INPUT_PULLUP
+    unit_of_measurement: 'RPM'
+    id: pump_speed
+    name: Pump Speed
+    accuracy_decimals: 0
+    filters:
+     - multiply: 0.5  # Depending on how many pulses the fan sends per round - should be 0.5 or 1 - try...
+    count_mode: 
+      rising_edge: INCREMENT
+      falling_edge: DISABLE
+    update_interval: 30s
+
+switch:
+  - platform: gpio
+    pin: GPIO33
+    name: "TEC1" # Bottom 
+    id: G1
+    interlock: [G2]
+  - platform: gpio 
+    pin: GPIO38
+    name: "TEC2" # Lower middle
+    id: G2
+    interlock: [G1]
+  - platform: gpio
+    pin: GPIO1
+    name: "TEC3" # Bottom 
+    id: G3
+    interlock: [G4]
+  - platform: gpio 
+    pin: GPIO3
+    name: "TEC4" # Lower middle
+    id: G4
+    interlock: [G3]
+  - platform: gpio
+    name: "TEC FANS"
+    id: G5
+    pin: GPIO7
+  - platform: gpio
+    name: "PSU Enable"
+    id: PSU_E
+    pin: GPIO10
+  - platform: template
+    id: heat_switch
+    name: "Heat Switch"
+    optimistic: True
+    turn_on_action: 
+      then:
+        - switch.turn_off: cooling_switch
+        - switch.turn_on: PSU_E
+        # - fan.turn_on: 
+        #     id: TEC2_Control
+        #     speed: 50
+        - switch.turn_on: G3
+        - switch.turn_on: G5 # TEC Fans
+    turn_off_action: 
+      then:
+        #- fan.turn_off: TEC2_Control
+        - switch.turn_off: G3
+        - switch.turn_off: G5 # TEC Fans
+        - switch.turn_off: PSU_E
+  - platform: template
+    id: cooling_switch
+    name: "Cooling Switch"
+    optimistic: True
+    turn_on_action: 
+      then:
+        - switch.turn_off: heat_switch
+        - switch.turn_on: PSU_E
+        #- fan.turn_on: 
+        #    id: TEC1_Control
+        #    speed: 50
+        - switch.turn_on: G4 
+        - switch.turn_on: G5 # TEC Fans
+    turn_off_action: 
+      then:
+        #- fan.turn_off: TEC1_Control
+        - switch.turn_off: G4
+        - switch.turn_off: G5 # TEC Fans
+        - switch.turn_off: PSU_E
+
+
+
+  
+output:
+  # Wire this pin (13) into the PWM pin of your 12v fan
+  # ledc is the name of the pwm output system on an esp32
+  - platform: ledc
+    id: fan_speed_out
+    pin: GPIO9
+    channel: 2
+    frequency: "19531Hz"
+    #min_power: 13%
+    #max_power: 80%
+    #zero_means_zero: true
+
+ 
+  - platform: ledc
+    id: pump_speed_out
+    pin: GPIO6
+    channel: 4
+    frequency: "19531Hz"
+
+  # - platform: ledc
+  #   id: TEC1
+  #   pin: GPIO33
+  #   channel: 6
+  #   frequency: "19531Hz"
+
+  # - platform: ledc
+  #   id: TEC2
+  #   pin: GPIO38
+  #   channel: 8
+  #   frequency: "19531Hz"
+  #   zero_means_zero: True
+
+  
+fan:
+  - platform: speed
+    id: manual_fan_control
+    output: fan_speed_out
+    name: "Manual Fan Speed"
+  - platform: speed
+    id: manual_pump_control
+    output: pump_speed_out
+    name: "Manual Pump Speed"
+  # - platform: speed
+  #   id: TEC1_Control
+  #   output: TEC1
+  #   name: "TEC 1"
+  # - platform: speed
+  #   id: TEC2_Control
+  #   output: TEC2
+  #   name: "TEC 2"

@@ -1,0 +1,266 @@
+{
+  "uuid": "eb7e59d93ff1cee38848bedd429557af",
+  "path": "Offline/TEC_Cooler",
+  "name": "TEC_Cooler",
+  "content": "",
+  "created_at": "2024-06-23 20:54:19",
+  "updated_at": "2024-11-08 23:52:00",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "c9d7b7657142b0ddbdca2b7d525d1809",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "b297b02591c54bf7ac6183f4a6821695": 1,
+        "92ee56e913e047a7b007f16889fd1c5e": 2,
+        "e2c95434a4de46d6836599e6756ab63a": 4,
+        "93dcaffcd4b946d8af8e5bc6b1cf335e": 1,
+        "92874958072e437bad7456cf7f85f115": 1,
+        "3ec77201bbcd4ecd8722658d581a4e60": 1,
+        "cafac44822294097bb4246eaa2ec4c6d": 1,
+        "aa721a3436134f229c0696341832f4c3": 2,
+        "ec7a5fe3cdee49c4ba67c555fdedf9eb": 1,
+        "3d46184c70c243cb807a83aeca3f425d": 9,
+        "779235243641424bad2ea21fcc6f0832": 16,
+        "5defe930d94c4f2094d230cdb6f3b0f9": 4,
+        "5d18ba9ac5ac4cffabad1ec5363ef1d0": 1,
+        "4a004a14368efc2ea3960b437ccb8e92": 1,
+        "dab32be2c96c44539f40c9290f9b0634": 2,
+        "6c695aaa7b334eff94bbabe8028ab4de": 4,
+        "ef282ed0ee9541a1b2b5ecdec302e810": 3
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "10uF",
+          1,
+          "C0805",
+          "C3",
+          {
+            "Manufacturer Part": "CL21A106KOQNNNE",
+            "Manufacturer": "SAMSUNG(三星)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C1713"
+          }
+        ],
+        [
+          "1000uF",
+          3,
+          "CAP-SMD_BD10.0-L10.3-W10.3-LS11.3-FD",
+          "C7,C8,C9",
+          {
+            "Manufacturer Part": "RT1C102M1010",
+            "Manufacturer": "ROQANG(容强)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C280408"
+          }
+        ],
+        [
+          "47053-1000",
+          2,
+          "CONN-TH_47053-1000",
+          "CASE-FAN,PUMP",
+          {
+            "Manufacturer Part": "470531000",
+            "Manufacturer": "MOLEX",
+            "Supplier": "LCSC",
+            "Supplier Part": "C240840"
+          }
+        ],
+        [
+          "1N4148W",
+          1,
+          "SOD-123_L2.7-W1.6-LS3.7-FD",
+          "D1",
+          {
+            "Manufacturer Part": "1N4148W",
+            "Manufacturer": "宏迦橙",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7420318"
+          }
+        ],
+        [
+          "BC847BLT1G",
+          1,
+          "SOT-23-3_L2.9-W1.6-P1.90-LS2.8-BR",
+          "Q1",
+          {
+            "Manufacturer Part": "BC847BLT1G",
+            "Manufacturer": "onsemi(安森美)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C94393"
+          }
+        ],
+        [
+          "IRF8010PBF",
+          4,
+          "ITO-220AB-3_L10.2-W4.5-P2.60-L",
+          "Q3,Q4,Q5,Q6",
+          {
+            "Manufacturer Part": "IRF8010PBF",
+            "Manufacturer": "Infineon(英飞凌)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C80624"
+          }
+        ],
+        [
+          "10kΩ",
+          14,
+          "R0805",
+          "R1,R2,R3,R4,R5,R6,R7,R8,R9,R10,R11,R12,R13,R14",
+          {
+            "Manufacturer Part": "0805W8F1002T5E",
+            "Manufacturer": "UNIROYAL",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17414"
+          }
+        ],
+        [
+          "1kΩ",
+          2,
+          "R0805",
+          "R22,R23",
+          {
+            "Manufacturer Part": "0805W8F1001T5E",
+            "Manufacturer": "UNIROYAL",
+            "Supplier": "LCSC",
+            "Supplier Part": "C17513"
+          }
+        ],
+        [
+          "4.7uH",
+          9,
+          "IND-SMD_L7.2-W6.6_GPSR07X0",
+          "U1,U12,U13,U14,U15,U16,U17,U18,U19",
+          {
+            "Manufacturer Part": "CYA0650-4.7UH",
+            "Manufacturer": "SHOU HAN(首韩)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5189754"
+          }
+        ],
+        [
+          "CD40109BNSR",
+          2,
+          "SO-16_L10.3-W5.3-P1.27-LS7.8-BL",
+          "U2,U3",
+          {
+            "Manufacturer Part": "CD40109BNSR",
+            "Manufacturer": "TI(德州仪器)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2677639"
+          }
+        ],
+        [
+          "10Ω",
+          4,
+          "RES-TH_BD5.0-L15.5-P19.50-D0.7",
+          "U4,U8,U9,U10",
+          {
+            "Manufacturer Part": "KNP2W-10Ω±5%T",
+            "Manufacturer": "华星机电",
+            "Supplier": "LCSC",
+            "Supplier Part": "C714512"
+          }
+        ],
+        [
+          "IRFB7545PBF",
+          1,
+          "TO-220-3_L10.0-W4.5-P2.54-L",
+          "U6",
+          {
+            "Manufacturer Part": "IRFB7545PBF",
+            "Manufacturer": "Infineon(英飞凌)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2997913"
+          }
+        ]
+      ],
+      "updateTime": 1731109883,
+      "createTime": 1719172460,
+      "histories": [],
+      "created_at": "2024-06-23 20:54:20",
+      "updated_at": "2024-11-08 23:51:23"
+    },
+    {
+      "uuid": "70423178f9c63444362ac4cff70df048",
+      "puuid": "eb7e59d93ff1cee38848bedd429557af",
+      "title": "PCB_TEC_Cooler",
+      "filename": "PCB_TEC_Cooler.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "9acf9bb6fa4148f0b9bbcc50d6ef648b": 8,
+        "7630cd0d5b9d4ac4ab8bdd0291b95847": 8,
+        "b60f399a7a7e41848b2be1eb49c79141": 6,
+        "72ac7f1df4764758af2cbca1390417c9": 2,
+        "9a70192dfede4d11bfb2fe6dba2e6639": 1,
+        "5f0890d3e8784200888270a71bfdc483": 2,
+        "2377a94af32343cda6a22b97270f5e1e": 8,
+        "b3b82869fa924bae820e3a6cfb44d689": 1,
+        "948e610cffd14df79f04c73832b1409b": 5,
+        "4b50447921424b2a92d41f4134ddc676": 1,
+        "36b1306a115341f4b4d9407fb34974e0": 1,
+        "71450838f2174409b429143f6acc9d2a": 1
+      },
+      "BOM": [],
+      "updateTime": 1719917243,
+      "createTime": 1719181948,
+      "histories": [],
+      "created_at": "2024-06-23 23:32:28",
+      "updated_at": "2024-07-02 11:47:23"
+    },
+    {
+      "uuid": "ff497a46f3166d78400109011432ec79",
+      "puuid": "eb7e59d93ff1cee38848bedd429557af",
+      "title": "PCB_TEC_Cooler_V2",
+      "filename": "PCB_TEC_Cooler_V2.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "b60f399a7a7e41848b2be1eb49c79141": 16,
+        "9a70192dfede4d11bfb2fe6dba2e6639": 1,
+        "46471eb7c1f4441abf3e509b847487d3": 3,
+        "7d8eaf90b1774800950626f3ca76280c": 2,
+        "3555ffdfa5e3425c8467c785b518656f": 4,
+        "2ee8eb13a0124a108e622ce40c0c25a8": 1,
+        "ebbbb17eba5a414f8bd83c157683b84c": 9,
+        "da6cdf30a6914871840e9ba36659fd23": 1,
+        "4b73c61053f9437599e8956c44ffaa53": 4,
+        "ca3e9bbdab66464db88b00d6b2b2321a": 1,
+        "72ac7f1df4764758af2cbca1390417c9": 2,
+        "5f0890d3e8784200888270a71bfdc483": 2,
+        "2377a94af32343cda6a22b97270f5e1e": 4,
+        "b3b82869fa924bae820e3a6cfb44d689": 1,
+        "948e610cffd14df79f04c73832b1409b": 1,
+        "4b50447921424b2a92d41f4134ddc676": 1,
+        "36b1306a115341f4b4d9407fb34974e0": 1
+      },
+      "BOM": [],
+      "updateTime": 1731109920,
+      "createTime": 1720038572,
+      "histories": [],
+      "created_at": "2024-07-03 21:29:32",
+      "updated_at": "2024-11-08 23:52:00"
+    }
+  ],
+  "sort": [],
+  "title": "TEC_Cooler",
+  "foldername": "TEC_Cooler",
+  "schfilename": "TEC_Cooler.json",
+  "schfilemtime": 1731109883326
+}
